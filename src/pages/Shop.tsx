@@ -4,7 +4,6 @@ import { CheckCircle2, Plus, Minus, X, Zap, Droplets, Brain, Shield, Activity, F
 import { Link } from 'react-router-dom';
 import { products, Product } from '../data/products';
 import { useCart } from '../context/CartContext';
-import { cn } from '../lib/utils';
 import { Container } from '../components/Container';
 
 export const Shop = () => {
@@ -186,10 +185,9 @@ export const Shop = () => {
             <div className="flex justify-center gap-8 md:gap-12 flex-wrap">
               <button
                 onClick={() => setActiveTab('cans')}
-                className={cn(
-                  "py-6 font-bold uppercase tracking-widest transition-all relative",
+                className={`py-6 font-bold uppercase tracking-widest transition-all relative ${
                   activeTab === 'cans' ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
-                )}
+                }`}
               >
                 Cans
                 {activeTab === 'cans' && (
@@ -198,10 +196,9 @@ export const Shop = () => {
               </button>
               <button
                 onClick={() => setActiveTab('powders')}
-                className={cn(
-                  "py-6 font-bold uppercase tracking-widest transition-all relative",
+                className={`py-6 font-bold uppercase tracking-widest transition-all relative ${
                   activeTab === 'powders' ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
-                )}
+                }`}
               >
                 Tub
                 {activeTab === 'powders' && (
@@ -210,10 +207,9 @@ export const Shop = () => {
               </button>
               <button
                 onClick={() => setActiveTab('bundles')}
-                className={cn(
-                  "py-6 font-bold uppercase tracking-widest transition-all relative",
+                className={`py-6 font-bold uppercase tracking-widest transition-all relative ${
                   activeTab === 'bundles' ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
-                )}
+                }`}
               >
                 Bundles
                 {activeTab === 'bundles' && (
