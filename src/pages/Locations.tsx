@@ -1,52 +1,15 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { MapPin, Search, Store, Navigation, Phone, Clock, Globe } from 'lucide-react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import { renderToString } from 'react-dom/server';
+import { Zap } from 'lucide-react';
+import { locations } from '../data/locations';
+import { Container } from '../components/Container';
 
 export const Locations = () => {
   const [searchQuery, setSearchQuery] = useState('');
-
-  const stores = [
-    { 
-      name: 'Apex Fitness Center', 
-      address: '123 Performance Way, London', 
-      distance: '0.8 miles', 
-      status: 'Open',
-      phone: '+44 20 7123 4567',
-      hours: '06:00 - 22:00',
-      type: 'Gym & Fitness',
-      stock: ['Original Velocity', 'Arctic Surge', 'Volcanic Blood Mix']
-    },
-    { 
-      name: 'Velocity Supplements', 
-      address: '45 High Street, Manchester', 
-      distance: '2.4 miles', 
-      status: 'Open',
-      phone: '+44 161 987 6543',
-      hours: '09:00 - 20:00',
-      type: 'Retail Specialist',
-      stock: ['Full Arsenal Range']
-    },
-    { 
-      name: 'Primal Gym & Spa', 
-      address: '88 Evolution Road, Birmingham', 
-      distance: '5.1 miles', 
-      status: 'Closing Soon',
-      phone: '+44 121 444 3333',
-      hours: '07:00 - 21:00',
-      type: 'Health Club',
-      stock: ['Original Velocity', 'Primal Punch']
-    },
-    { 
-      name: 'The Surge Market', 
-      address: '12 Coastal Path, Brighton', 
-      distance: '12.4 miles', 
-      status: 'Open',
-      phone: '+44 1273 111 222',
-      hours: '08:00 - 22:00',
-      type: 'Natural Foods',
-      stock: ['Limited Edition Bundles', 'All Cans']
-    }
-  ];
 
   return (
     <motion.div
@@ -57,7 +20,7 @@ export const Locations = () => {
       className="min-h-screen bg-background"
     >
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-32 pb-20">
+      <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-40 pb-32">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-secondary/10 rounded-full blur-[160px]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(#ff8f70_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
@@ -68,7 +31,7 @@ export const Locations = () => {
             referrerPolicy="no-referrer" 
           />
         </div>
-        <div className="container mx-auto px-6 relative z-10 text-center lg:text-left">
+        <Container className="relative z-10 text-center lg:text-left">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -82,7 +45,7 @@ export const Locations = () => {
               The surge is spreading globally. Locate your nearest Rex Velocity authorized deployment center and refuel your biological arsenal.
             </p>
           </motion.div>
-        </div>
+        </Container>
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none hidden lg:block">
           <MapPin className="w-[600px] h-[600px] text-primary rotate-12 animate-float" />
         </div>
@@ -90,7 +53,7 @@ export const Locations = () => {
 
       {/* Store Locator Section */}
       <section className="py-24">
-        <div className="container mx-auto px-6">
+        <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Sidebar Search */}
             <motion.div 
@@ -124,7 +87,7 @@ export const Locations = () => {
                 </div>
 
                 <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
-                  {stores.map((store, i) => (
+                  {locations.map((store, i) => (
                     <motion.div 
                       key={i} 
                       initial={{ opacity: 0, x: -10 }}
@@ -134,28 +97,13 @@ export const Locations = () => {
                       className="p-6 rounded-[2rem] bg-surface-container-lowest hover:bg-surface-container-highest transition-all cursor-pointer border border-transparent hover:border-secondary/30 group relative overflow-hidden"
                     >
                       <div className="relative z-10">
-                        <div className="flex justify-between items-start mb-2">
+                        <div className="flex justify-between items-center mb-2">
                           <h4 className="text-lg font-black font-headline uppercase italic group-hover:text-secondary transition-colors line-clamp-1">{store.name}</h4>
-                          <span className="text-[10px] font-black text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">{store.distance}</span>
-                        </div>
-                        <p className="text-xs text-on-surface-variant mb-4 font-light">{store.address}</p>
-                        
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {store.stock.slice(0, 2).map((item, idx) => (
-                            <span key={idx} className="text-[9px] font-bold uppercase tracking-wider bg-background px-2 py-1 rounded-md text-on-surface-variant/60">
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center justify-between pt-4 border-t border-outline-variant/10">
-                          <span className={`text-[10px] font-black uppercase tracking-widest ${store.status === 'Open' ? 'text-emerald-500' : 'text-orange-500'}`}>
-                            {store.status}
-                          </span>
                           <button className="text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
                             <Navigation className="w-4 h-4" />
                           </button>
                         </div>
+                        <p className="text-xs text-on-surface-variant font-light">{store.address}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -172,52 +120,52 @@ export const Locations = () => {
               className="lg:col-span-8"
             >
               <div className="w-full h-[500px] lg:h-[800px] bg-surface-container-highest rounded-[3.5rem] relative overflow-hidden border border-outline-variant/10 shadow-2xl shadow-black/20 group">
-                {/* Dynamic Map Grid Background */}
-                <div className="absolute inset-0 z-0 opacity-20 transition-opacity duration-700 group-hover:opacity-30">
-                  <div className="absolute inset-0 bg-[radial-gradient(#ff8f70_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-                  <img alt="Abstract tactical map" className="w-full h-full object-cover filter contrast-125 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs7P3z6elJ_vZ64UexC9qos5pI7PxIrZMc9UTXkaoJVey1F_YX5iRXv3MR1XI8v7aJ6Zmq-zZWMUC0e8NmIsVmXnE3O5Rk3hs-fyNG5LyCB2gl0GVsoaGkcDt-Udnp8cEhZaszkzDjxZfeT3bBwigEQpK31Ow2s9tzUeZJ0ykMdzQaJ-id6XGEz-o03KB87iMXsSJhqG92_Dt0Hh_Y9lrrHgth8WjI8H0I_KHfgUUTxDbk4Yk84-7qk2itMxotQNZnhgDeALlHP9k" referrerPolicy="no-referrer" />
-                </div>
-
-                {/* Map Markers Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-12">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="relative z-10 w-full max-w-lg bg-surface-container-lowest/80 backdrop-blur-2xl rounded-[3rem] border border-white/10 p-10 md:p-12 text-center shadow-3xl shadow-black/50"
-                  >
-                    <div className="w-24 h-24 bg-primary rounded-full mx-auto mb-8 flex items-center justify-center shadow-[0_0_60px_rgba(255,143,112,0.4)] animate-pulse">
-                      <MapPin className="w-12 h-12 text-on-primary-fixed" />
-                    </div>
-                    <h4 className="text-3xl md:text-4xl font-black font-headline uppercase italic mb-4 leading-none">Biological Network</h4>
-                    <p className="text-on-surface-variant text-base md:text-lg font-light leading-relaxed mb-8">
-                      Authorized deployment centers detected. Search by territory to reveal specific access points.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 bg-background/50 rounded-2xl border border-white/5">
-                        <span className="block text-2xl font-black font-headline text-secondary">248+</span>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Active Nodes</span>
-                      </div>
-                      <div className="p-4 bg-background/50 rounded-2xl border border-white/5">
-                        <span className="block text-2xl font-black font-headline text-primary">12</span>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Expansion Zones</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
+                <MapContainer center={[51.505, -0.09]} zoom={11} style={{ height: '100%', width: '100%', zIndex: 0 }}>
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                  />
+                  {locations.map((loc) => {
+                    const customIcon = L.divIcon({
+                      html: renderToString(
+                        <div className="relative flex items-center justify-center w-8 h-8">
+                          <div className="absolute w-full h-full rounded-full bg-primary/40 animate-ping"></div>
+                          <div className="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-primary shadow-[0_0_15px_rgba(255,143,112,0.8)] border-2 border-surface-container-highest">
+                            <Zap className="w-3 h-3 text-on-primary" />
+                          </div>
+                        </div>
+                      ),
+                      className: '', // Clear default class
+                      iconSize: [32, 32],
+                      iconAnchor: [16, 16],
+                    });
+                    return (
+                    <Marker key={loc.id} position={[loc.lat, loc.lng]} icon={customIcon}>
+                      <Popup className="custom-popup">
+                        <div className="flex flex-col gap-1 min-w-[150px]">
+                          <div className="font-black font-headline uppercase italic text-on-surface text-sm border-b border-white/10 pb-1 mb-1 pr-6">{loc.name}</div>
+                          <div className="text-[10px] text-on-surface-variant font-light leading-tight">{loc.address}</div>
+                          <div className={`text-[10px] mt-1 font-black uppercase tracking-widest ${loc.status === 'Open' ? 'text-emerald-500' : 'text-orange-500'}`}>
+                            {loc.status}
+                          </div>
+                        </div>
+                      </Popup>
+                    </Marker>
+                    );
+                  })}
+                </MapContainer>
 
                 {/* Map Scanning Effect */}
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-secondary/30 shadow-[0_0_20px_rgba(255,215,9,0.5)] animate-scan z-10"></div>
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-secondary/30 shadow-[0_0_20px_rgba(255,215,9,0.5)] animate-scan z-10 pointer-events-none"></div>
               </div>
             </motion.div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Become a Reseller Partner */}
       <section className="py-24 bg-surface-container-low border-t border-outline-variant/10">
-        <div className="container mx-auto px-6">
+        <Container>
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
             <div className="lg:w-1/2">
               <h2 className="text-4xl md:text-6xl font-black font-headline uppercase italic leading-none mb-6">Authorize Your <span className="text-primary">Territory</span></h2>
@@ -257,7 +205,7 @@ export const Locations = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
     </motion.div>
   );

@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Container } from '../components/Container';
 
 export const Cart = () => {
   const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
@@ -40,7 +41,7 @@ export const Cart = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-20 min-h-screen bg-background"
     >
-      <div className="container mx-auto px-6">
+      <Container>
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Cart Items */}
           <div className="flex-1">
@@ -151,7 +152,7 @@ export const Cart = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </motion.div>
   );
 };
