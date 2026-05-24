@@ -11,7 +11,7 @@
 **RexVelocity** is a complete e-commerce application for a fictional energy drink brand. Built as a portfolio simulation project, it demonstrates modern web development practices across frontend, backend, and user experience design.
 
 
-**Project Timeline:** 38 days (April - May 2026)  
+**Project Timeline:**
 **Repository:** [github.com/Reddevildragg/RexVelocity](https://github.com/Reddevildragg/RexVelocity)  
 **Status:** Completed  
 **Live:** [rexvelocity.web.app](https://rexvelocity.web.app)
