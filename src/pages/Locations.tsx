@@ -6,6 +6,7 @@ import L from 'leaflet';
 import { renderToString } from 'react-dom/server';
 import { Zap } from 'lucide-react';
 import { locations } from '../data/locations';
+import { Container } from '../components/Container';
 
 export const Locations = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -30,7 +31,7 @@ export const Locations = () => {
             referrerPolicy="no-referrer" 
           />
         </div>
-        <div className="container mx-auto px-6 relative z-10 text-center lg:text-left">
+        <Container className="relative z-10 text-center lg:text-left">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -44,7 +45,7 @@ export const Locations = () => {
               The surge is spreading globally. Locate your nearest Rex Velocity authorized deployment center and refuel your biological arsenal.
             </p>
           </motion.div>
-        </div>
+        </Container>
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none hidden lg:block">
           <MapPin className="w-[600px] h-[600px] text-primary rotate-12 animate-float" />
         </div>
@@ -52,7 +53,7 @@ export const Locations = () => {
 
       {/* Store Locator Section */}
       <section className="py-24">
-        <div className="container mx-auto px-6">
+        <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Sidebar Search */}
             <motion.div 
@@ -159,12 +160,12 @@ export const Locations = () => {
               </div>
             </motion.div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Become a Reseller Partner */}
       <section className="py-24 bg-surface-container-low border-t border-outline-variant/10">
-        <div className="container mx-auto px-6">
+        <Container>
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
             <div className="lg:w-1/2">
               <h2 className="text-4xl md:text-6xl font-black font-headline uppercase italic leading-none mb-6">Authorize Your <span className="text-primary">Territory</span></h2>
@@ -204,7 +205,7 @@ export const Locations = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
     </motion.div>
   );
