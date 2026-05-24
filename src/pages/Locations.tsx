@@ -96,28 +96,13 @@ export const Locations = () => {
                       className="p-6 rounded-[2rem] bg-surface-container-lowest hover:bg-surface-container-highest transition-all cursor-pointer border border-transparent hover:border-secondary/30 group relative overflow-hidden"
                     >
                       <div className="relative z-10">
-                        <div className="flex justify-between items-start mb-2">
+                        <div className="flex justify-between items-center mb-2">
                           <h4 className="text-lg font-black font-headline uppercase italic group-hover:text-secondary transition-colors line-clamp-1">{store.name}</h4>
-                          <span className="text-[10px] font-black text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">{store.distance}</span>
-                        </div>
-                        <p className="text-xs text-on-surface-variant mb-4 font-light">{store.address}</p>
-                        
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {store.stock.slice(0, 2).map((item, idx) => (
-                            <span key={idx} className="text-[9px] font-bold uppercase tracking-wider bg-background px-2 py-1 rounded-md text-on-surface-variant/60">
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center justify-between pt-4 border-t border-outline-variant/10">
-                          <span className={`text-[10px] font-black uppercase tracking-widest ${store.status === 'Open' ? 'text-emerald-500' : 'text-orange-500'}`}>
-                            {store.status}
-                          </span>
                           <button className="text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
                             <Navigation className="w-4 h-4" />
                           </button>
                         </div>
+                        <p className="text-xs text-on-surface-variant font-light">{store.address}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -155,11 +140,13 @@ export const Locations = () => {
                     });
                     return (
                     <Marker key={loc.id} position={[loc.lat, loc.lng]} icon={customIcon}>
-                      <Popup>
-                        <div className="font-bold text-gray-900">{loc.name}</div>
-                        <div className="text-xs text-gray-700">{loc.address}</div>
-                        <div className={`text-xs mt-1 font-semibold ${loc.status === 'Open' ? 'text-emerald-500' : 'text-orange-500'}`}>
-                          {loc.status}
+                      <Popup className="custom-popup">
+                        <div className="flex flex-col gap-1 min-w-[150px]">
+                          <div className="font-black font-headline uppercase italic text-on-surface text-sm border-b border-white/10 pb-1 mb-1">{loc.name}</div>
+                          <div className="text-[10px] text-on-surface-variant font-light leading-tight">{loc.address}</div>
+                          <div className={`text-[10px] mt-1 font-black uppercase tracking-widest ${loc.status === 'Open' ? 'text-emerald-500' : 'text-orange-500'}`}>
+                            {loc.status}
+                          </div>
                         </div>
                       </Popup>
                     </Marker>

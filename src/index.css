@@ -119,3 +119,18 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
 }
+
+/* Custom Leaflet Popup Styles */
+.leaflet-popup.custom-popup .leaflet-popup-content-wrapper {
+  @apply bg-surface-container-highest border border-outline-variant/20 rounded-xl shadow-2xl;
+  padding: 0;
+}
+.leaflet-popup.custom-popup .leaflet-popup-content {
+  margin: 12px;
+}
+.leaflet-popup.custom-popup .leaflet-popup-tip {
+  @apply bg-surface-container-highest border border-outline-variant/20;
+}
+.leaflet-popup.custom-popup .leaflet-popup-close-button {
+  @apply text-on-surface-variant hover:text-primary transition-colors mt-1 mr-1;
+}
