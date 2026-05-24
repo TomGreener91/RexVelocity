@@ -2,6 +2,7 @@ export interface Location {
   id: number;
   name: string;
   address: string;
+  distance: string;
   lat: number;
   lng: number;
   status: string;
@@ -16,6 +17,7 @@ export const locations: Location[] = [
     "id": 1,
     "name": "Apex Fitness Center",
     "address": "123 Performance Way, Soho, London",
+    "distance": "0.8 miles",
     "lat": 51.5145,
     "lng": -0.1340,
     "status": "Open",
@@ -28,6 +30,7 @@ export const locations: Location[] = [
     "id": 2,
     "name": "Velocity Supplements",
     "address": "45 High Street, Camden, London",
+    "distance": "2.4 miles",
     "lat": 51.5400,
     "lng": -0.1426,
     "status": "Open",
@@ -40,6 +43,7 @@ export const locations: Location[] = [
     "id": 3,
     "name": "Primal Gym & Spa",
     "address": "88 Riverside, Greenwich, London",
+    "distance": "4.1 miles",
     "lat": 51.4826,
     "lng": -0.0077,
     "status": "Closed",
@@ -52,6 +56,7 @@ export const locations: Location[] = [
     "id": 4,
     "name": "Ironworks Barbell Club",
     "address": "22 Iron Lane, Hackney, London",
+    "distance": "5.5 miles",
     "lat": 51.5450,
     "lng": -0.0553,
     "status": "Open",
@@ -64,6 +69,7 @@ export const locations: Location[] = [
     "id": 5,
     "name": "Pure Muscle Nutrition",
     "address": "10 Upper Street, Islington, London",
+    "distance": "1.2 miles",
     "lat": 51.5362,
     "lng": -0.1030,
     "status": "Open",
@@ -76,6 +82,7 @@ export const locations: Location[] = [
     "id": 6,
     "name": "The Core Health Hub",
     "address": "5 Borough High St, Southwark, London",
+    "distance": "1.8 miles",
     "lat": 51.5030,
     "lng": -0.0889,
     "status": "Open",
@@ -88,6 +95,7 @@ export const locations: Location[] = [
     "id": 7,
     "name": "Elite Athletics Track",
     "address": "Olympic Park, Stratford, London",
+    "distance": "6.2 miles",
     "lat": 51.5420,
     "lng": -0.0036,
     "status": "Open",
@@ -100,6 +108,7 @@ export const locations: Location[] = [
     "id": 8,
     "name": "Titan Barbell Club",
     "address": "40 Wandsworth High St, Wandsworth, London",
+    "distance": "4.8 miles",
     "lat": 51.4571,
     "lng": -0.1916,
     "status": "Closed",
@@ -112,6 +121,7 @@ export const locations: Location[] = [
     "id": 9,
     "name": "Supreme Fitness",
     "address": "150 Kensington High St, Kensington, London",
+    "distance": "3.3 miles",
     "lat": 51.5010,
     "lng": -0.1930,
     "status": "Open",
@@ -124,6 +134,7 @@ export const locations: Location[] = [
     "id": 10,
     "name": "Peak Performance Store",
     "address": "200 King's Rd, Chelsea, London",
+    "distance": "2.9 miles",
     "lat": 51.4875,
     "lng": -0.1687,
     "status": "Open",

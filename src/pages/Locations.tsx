@@ -3,15 +3,9 @@ import { useState } from 'react';
 import { MapPin, Search, Store, Navigation, Phone, Clock, Globe } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import { renderToString } from 'react-dom/server';
+import { Zap } from 'lucide-react';
 import { locations } from '../data/locations';
-
-let DefaultIcon = L.icon({
-    iconUrl: icon,
-    shadowUrl: iconShadow
-});
-L.Marker.prototype.options.icon = DefaultIcon;
 
 export const Locations = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -104,6 +98,7 @@ export const Locations = () => {
                       <div className="relative z-10">
                         <div className="flex justify-between items-start mb-2">
                           <h4 className="text-lg font-black font-headline uppercase italic group-hover:text-secondary transition-colors line-clamp-1">{store.name}</h4>
+                          <span className="text-[10px] font-black text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">{store.distance}</span>
                         </div>
                         <p className="text-xs text-on-surface-variant mb-4 font-light">{store.address}</p>
                         
@@ -144,8 +139,22 @@ export const Locations = () => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                     url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                   />
-                  {locations.map((loc) => (
-                    <Marker key={loc.id} position={[loc.lat, loc.lng]}>
+                  {locations.map((loc) => {
+                    const customIcon = L.divIcon({
+                      html: renderToString(
+                        <div className="relative flex items-center justify-center w-8 h-8">
+                          <div className="absolute w-full h-full rounded-full bg-primary/40 animate-ping"></div>
+                          <div className="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-primary shadow-[0_0_15px_rgba(255,143,112,0.8)] border-2 border-surface-container-highest">
+                            <Zap className="w-3 h-3 text-on-primary" />
+                          </div>
+                        </div>
+                      ),
+                      className: '', // Clear default class
+                      iconSize: [32, 32],
+                      iconAnchor: [16, 16],
+                    });
+                    return (
+                    <Marker key={loc.id} position={[loc.lat, loc.lng]} icon={customIcon}>
                       <Popup>
                         <div className="font-bold text-gray-900">{loc.name}</div>
                         <div className="text-xs text-gray-700">{loc.address}</div>
@@ -154,7 +163,8 @@ export const Locations = () => {
                         </div>
                       </Popup>
                     </Marker>
-                  ))}
+                    );
+                  })}
                 </MapContainer>
 
                 {/* Map Scanning Effect */}
