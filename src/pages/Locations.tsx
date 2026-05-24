@@ -1,52 +1,20 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { MapPin, Search, Store, Navigation, Phone, Clock, Globe } from 'lucide-react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import { locations } from '../data/locations';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow
+});
+L.Marker.prototype.options.icon = DefaultIcon;
 
 export const Locations = () => {
   const [searchQuery, setSearchQuery] = useState('');
-
-  const stores = [
-    { 
-      name: 'Apex Fitness Center', 
-      address: '123 Performance Way, London', 
-      distance: '0.8 miles', 
-      status: 'Open',
-      phone: '+44 20 7123 4567',
-      hours: '06:00 - 22:00',
-      type: 'Gym & Fitness',
-      stock: ['Original Velocity', 'Arctic Surge', 'Volcanic Blood Mix']
-    },
-    { 
-      name: 'Velocity Supplements', 
-      address: '45 High Street, Manchester', 
-      distance: '2.4 miles', 
-      status: 'Open',
-      phone: '+44 161 987 6543',
-      hours: '09:00 - 20:00',
-      type: 'Retail Specialist',
-      stock: ['Full Arsenal Range']
-    },
-    { 
-      name: 'Primal Gym & Spa', 
-      address: '88 Evolution Road, Birmingham', 
-      distance: '5.1 miles', 
-      status: 'Closing Soon',
-      phone: '+44 121 444 3333',
-      hours: '07:00 - 21:00',
-      type: 'Health Club',
-      stock: ['Original Velocity', 'Primal Punch']
-    },
-    { 
-      name: 'The Surge Market', 
-      address: '12 Coastal Path, Brighton', 
-      distance: '12.4 miles', 
-      status: 'Open',
-      phone: '+44 1273 111 222',
-      hours: '08:00 - 22:00',
-      type: 'Natural Foods',
-      stock: ['Limited Edition Bundles', 'All Cans']
-    }
-  ];
 
   return (
     <motion.div
@@ -124,7 +92,7 @@ export const Locations = () => {
                 </div>
 
                 <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
-                  {stores.map((store, i) => (
+                  {locations.map((store, i) => (
                     <motion.div 
                       key={i} 
                       initial={{ opacity: 0, x: -10 }}
@@ -172,43 +140,26 @@ export const Locations = () => {
               className="lg:col-span-8"
             >
               <div className="w-full h-[500px] lg:h-[800px] bg-surface-container-highest rounded-[3.5rem] relative overflow-hidden border border-outline-variant/10 shadow-2xl shadow-black/20 group">
-                {/* Dynamic Map Grid Background */}
-                <div className="absolute inset-0 z-0 opacity-20 transition-opacity duration-700 group-hover:opacity-30">
-                  <div className="absolute inset-0 bg-[radial-gradient(#ff8f70_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-                  <img alt="Abstract tactical map" className="w-full h-full object-cover filter contrast-125 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs7P3z6elJ_vZ64UexC9qos5pI7PxIrZMc9UTXkaoJVey1F_YX5iRXv3MR1XI8v7aJ6Zmq-zZWMUC0e8NmIsVmXnE3O5Rk3hs-fyNG5LyCB2gl0GVsoaGkcDt-Udnp8cEhZaszkzDjxZfeT3bBwigEQpK31Ow2s9tzUeZJ0ykMdzQaJ-id6XGEz-o03KB87iMXsSJhqG92_Dt0Hh_Y9lrrHgth8WjI8H0I_KHfgUUTxDbk4Yk84-7qk2itMxotQNZnhgDeALlHP9k" referrerPolicy="no-referrer" />
-                </div>
-
-                {/* Map Markers Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-12">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="relative z-10 w-full max-w-lg bg-surface-container-lowest/80 backdrop-blur-2xl rounded-[3rem] border border-white/10 p-10 md:p-12 text-center shadow-3xl shadow-black/50"
-                  >
-                    <div className="w-24 h-24 bg-primary rounded-full mx-auto mb-8 flex items-center justify-center shadow-[0_0_60px_rgba(255,143,112,0.4)] animate-pulse">
-                      <MapPin className="w-12 h-12 text-on-primary-fixed" />
-                    </div>
-                    <h4 className="text-3xl md:text-4xl font-black font-headline uppercase italic mb-4 leading-none">Biological Network</h4>
-                    <p className="text-on-surface-variant text-base md:text-lg font-light leading-relaxed mb-8">
-                      Authorized deployment centers detected. Search by territory to reveal specific access points.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 bg-background/50 rounded-2xl border border-white/5">
-                        <span className="block text-2xl font-black font-headline text-secondary">248+</span>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Active Nodes</span>
-                      </div>
-                      <div className="p-4 bg-background/50 rounded-2xl border border-white/5">
-                        <span className="block text-2xl font-black font-headline text-primary">12</span>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Expansion Zones</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
+                <MapContainer center={[51.505, -0.09]} zoom={11} style={{ height: '100%', width: '100%', zIndex: 0 }}>
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  {locations.map((loc) => (
+                    <Marker key={loc.id} position={[loc.lat, loc.lng]}>
+                      <Popup>
+                        <div className="font-bold text-gray-900">{loc.name}</div>
+                        <div className="text-xs text-gray-700">{loc.address}</div>
+                        <div className={`text-xs mt-1 font-semibold ${loc.status === 'Open' ? 'text-emerald-500' : 'text-orange-500'}`}>
+                          {loc.status}
+                        </div>
+                      </Popup>
+                    </Marker>
+                  ))}
+                </MapContainer>
 
                 {/* Map Scanning Effect */}
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-secondary/30 shadow-[0_0_20px_rgba(255,215,9,0.5)] animate-scan z-10"></div>
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-secondary/30 shadow-[0_0_20px_rgba(255,215,9,0.5)] animate-scan z-10 pointer-events-none"></div>
               </div>
             </motion.div>
           </div>
