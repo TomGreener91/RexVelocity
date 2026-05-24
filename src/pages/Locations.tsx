@@ -104,7 +104,6 @@ export const Locations = () => {
                       <div className="relative z-10">
                         <div className="flex justify-between items-start mb-2">
                           <h4 className="text-lg font-black font-headline uppercase italic group-hover:text-secondary transition-colors line-clamp-1">{store.name}</h4>
-                          <span className="text-[10px] font-black text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">{store.distance}</span>
                         </div>
                         <p className="text-xs text-on-surface-variant mb-4 font-light">{store.address}</p>
                         
@@ -142,8 +141,8 @@ export const Locations = () => {
               <div className="w-full h-[500px] lg:h-[800px] bg-surface-container-highest rounded-[3.5rem] relative overflow-hidden border border-outline-variant/10 shadow-2xl shadow-black/20 group">
                 <MapContainer center={[51.505, -0.09]} zoom={11} style={{ height: '100%', width: '100%', zIndex: 0 }}>
                   <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                   />
                   {locations.map((loc) => (
                     <Marker key={loc.id} position={[loc.lat, loc.lng]}>

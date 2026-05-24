@@ -4,7 +4,6 @@ export interface Location {
   address: string;
   lat: number;
   lng: number;
-  distance: string;
   status: string;
   phone: string;
   hours: string;
@@ -19,7 +18,6 @@ export const locations: Location[] = [
     "address": "123 Performance Way, Soho, London",
     "lat": 51.5145,
     "lng": -0.1340,
-    "distance": "0.8 miles",
     "status": "Open",
     "phone": "+44 20 7123 4567",
     "hours": "06:00 - 22:00",
@@ -32,7 +30,6 @@ export const locations: Location[] = [
     "address": "45 High Street, Camden, London",
     "lat": 51.5400,
     "lng": -0.1426,
-    "distance": "2.4 miles",
     "status": "Open",
     "phone": "+44 20 8987 6543",
     "hours": "09:00 - 20:00",
@@ -45,7 +42,6 @@ export const locations: Location[] = [
     "address": "88 Riverside, Greenwich, London",
     "lat": 51.4826,
     "lng": -0.0077,
-    "distance": "4.1 miles",
     "status": "Closed",
     "phone": "+44 20 3456 7890",
     "hours": "05:00 - 23:00",
@@ -58,7 +54,6 @@ export const locations: Location[] = [
     "address": "22 Iron Lane, Hackney, London",
     "lat": 51.5450,
     "lng": -0.0553,
-    "distance": "3.5 miles",
     "status": "Open",
     "phone": "+44 20 7654 3210",
     "hours": "24 Hours",
@@ -71,7 +66,6 @@ export const locations: Location[] = [
     "address": "10 Upper Street, Islington, London",
     "lat": 51.5362,
     "lng": -0.1030,
-    "distance": "1.9 miles",
     "status": "Open",
     "phone": "+44 20 7333 4444",
     "hours": "10:00 - 19:00",
@@ -84,7 +78,6 @@ export const locations: Location[] = [
     "address": "5 Borough High St, Southwark, London",
     "lat": 51.5030,
     "lng": -0.0889,
-    "distance": "1.5 miles",
     "status": "Open",
     "phone": "+44 20 7222 3333",
     "hours": "06:00 - 21:00",
@@ -97,7 +90,6 @@ export const locations: Location[] = [
     "address": "Olympic Park, Stratford, London",
     "lat": 51.5420,
     "lng": -0.0036,
-    "distance": "5.0 miles",
     "status": "Open",
     "phone": "+44 20 7111 2222",
     "hours": "06:00 - 22:00",
@@ -110,7 +102,6 @@ export const locations: Location[] = [
     "address": "40 Wandsworth High St, Wandsworth, London",
     "lat": 51.4571,
     "lng": -0.1916,
-    "distance": "4.8 miles",
     "status": "Closed",
     "phone": "+44 20 7888 9999",
     "hours": "07:00 - 21:00",
@@ -123,7 +114,6 @@ export const locations: Location[] = [
     "address": "150 Kensington High St, Kensington, London",
     "lat": 51.5010,
     "lng": -0.1930,
-    "distance": "3.1 miles",
     "status": "Open",
     "phone": "+44 20 7999 8888",
     "hours": "05:30 - 23:00",
@@ -136,7 +126,6 @@ export const locations: Location[] = [
     "address": "200 King's Rd, Chelsea, London",
     "lat": 51.4875,
     "lng": -0.1687,
-    "distance": "3.3 miles",
     "status": "Open",
     "phone": "+44 20 7777 6666",
     "hours": "09:00 - 18:00",
