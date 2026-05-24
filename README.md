@@ -39,7 +39,6 @@ Rex Velocity is a modern e-commerce web application built for an energy drink br
 - **React GA4** - Google Analytics integration
 - **Vanilla Cookie Consent** - Cookie management
 - **Express** - Backend support
-- **CLSX/Tailwind Merge** - CSS utility helpers
 
 ## 🚀 Getting Started
 
@@ -157,7 +156,12 @@ The project integrates Google Analytics 4 (GA4) for tracking user behavior and e
 
 ## 🚢 Deployment
 
-The project is configured for Firebase deployment. To deploy:
+The project is configured for Firebase deployment.
+
+- **Production Deployment:** Commits to the `main` branch are automatically built and deployed to the live channel via the `.github/workflows/firebase-deploy.yml` GitHub Action.
+- **Pull Request Previews:** Pull requests automatically generate a temporary preview environment. The `.github/workflows/firebase-hosting-pull-request.yml` workflow deploys the preview and posts the link directly in the PR chat for easy testing.
+
+To deploy manually:
 
 ```bash
 # Build the project

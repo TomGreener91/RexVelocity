@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { cn } from '../lib/utils';
 import { Menu, X, ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { Container } from './Container';
@@ -33,10 +32,9 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300",
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? "bg-neutral-950/80 backdrop-blur-xl shadow-2xl shadow-orange-950/20" : "bg-neutral-950/60 backdrop-blur-xl"
-      )}>
+    }`}>
         <Container className="flex justify-between items-center py-4">
           <Link to="/" className="text-xl md:text-2xl font-black italic tracking-tighter text-primary font-headline">
             REX VELOCITY
@@ -53,12 +51,11 @@ export const Navbar = () => {
               >
                 <Link
                   to={link.href}
-                  className={cn(
-                    "font-label transition-all duration-300 hover:scale-105",
+                  className={`font-label transition-all duration-300 hover:scale-105 ${
                     location.pathname === link.href 
                       ? "text-primary font-bold border-b-2 border-primary pb-1" 
                       : "text-neutral-400 font-medium hover:text-primary/70"
-                  )}
+                  }`}
                 >
                   {link.name}
                 </Link>
@@ -103,10 +100,9 @@ export const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={cn(
-                    "text-xl font-headline tracking-tight",
+                  className={`text-xl font-headline tracking-tight ${
                     location.pathname === link.href ? "text-primary transition-colors" : "text-neutral-300"
-                  )}
+                  }`}
                 >
                   {link.name}
                 </Link>
