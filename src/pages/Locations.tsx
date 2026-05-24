@@ -142,7 +142,7 @@ export const Locations = () => {
                     <Marker key={loc.id} position={[loc.lat, loc.lng]} icon={customIcon}>
                       <Popup className="custom-popup">
                         <div className="flex flex-col gap-1 min-w-[150px]">
-                          <div className="font-black font-headline uppercase italic text-on-surface text-sm border-b border-white/10 pb-1 mb-1">{loc.name}</div>
+                          <div className="font-black font-headline uppercase italic text-on-surface text-sm border-b border-white/10 pb-1 mb-1 pr-6">{loc.name}</div>
                           <div className="text-[10px] text-on-surface-variant font-light leading-tight">{loc.address}</div>
                           <div className={`text-[10px] mt-1 font-black uppercase tracking-widest ${loc.status === 'Open' ? 'text-emerald-500' : 'text-orange-500'}`}>
                             {loc.status}
