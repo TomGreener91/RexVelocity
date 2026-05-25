@@ -20,7 +20,7 @@ export const Locations = () => {
       className="min-h-screen bg-background"
     >
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-40 pb-32">
+      <section className="min-h-[70vh] flex items-center relative overflow-hidden pt-40 pb-32">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-secondary/10 rounded-full blur-[160px]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(#ff8f70_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
