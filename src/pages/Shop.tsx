@@ -1,16 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Plus, Minus, X, Zap, Droplets, Brain, Shield, Activity, Flame, Wind, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { products, Product } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { Container } from '../components/Container';
+import { PageHero } from '../components/PageHero';
 
 export const Shop = () => {
   const { addToCart } = useCart();
   const [activeTab, setActiveTab] = useState<'cans' | 'powders' | 'bundles'>('cans');
   
+  const isFirstMount = useRef(true);
+
   useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+
     // Scroll to the top of the shop content when tab changes
     const shopContent = document.getElementById('shop-content');
     if (shopContent) {
@@ -153,29 +161,13 @@ export const Shop = () => {
       className="min-h-screen bg-background"
     >
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-40 pb-32">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary/10 to-transparent"></div>
-        </div>
-        <Container className="relative z-10 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl sm:text-7xl md:text-8xl font-black font-headline tracking-tighter mb-6 uppercase italic leading-none"
-          >
-            THE <span className="text-primary">SHOP</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto font-light leading-relaxed"
-          >
-            Deploy your fuel. From individual biological triggers to total pack dominance, we've engineered the perfect arsenal for every hunt.
-          </motion.p>
-        </Container>
-      </section>
+      <PageHero
+        title={<>The <br /><span className="text-primary italic">Shop</span></>}
+        description="Deploy your fuel. From individual biological triggers to total pack dominance, we've engineered the perfect arsenal for every hunt."
+        backgroundImage="https://lh3.googleusercontent.com/aida-public/AB6AXuDs7P3z6elJ_vZ64UexC9qos5pI7PxIrZMc9UTXkaoJVey1F_YX5iRXv3MR1XI8v7aJ6Zmq-zZWMUC0e8NmIsVmXnE3O5Rk3hs-fyNG5LyCB2gl0GVsoaGkcDt-Udnp8cEhZaszkzDjxZfeT3bBwigEQpK31Ow2s9tzUeZJ0ykMdzQaJ-id6XGEz-o03KB87iMXsSJhqG92_Dt0Hh_Y9lrrHgth8WjI8H0I_KHfgUUTxDbk4Yk84-7qk2itMxotQNZnhgDeALlHP9k"
+        themeColor="primary"
+        hasGridBackground={true}
+      />
 
       {/* Shop Content Wrapper - Controls sticky boundaries */}
       <div id="shop-content" className="relative">

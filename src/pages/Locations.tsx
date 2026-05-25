@@ -7,6 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { Zap } from 'lucide-react';
 import { locations } from '../data/locations';
 import { Container } from '../components/Container';
+import { PageHero } from '../components/PageHero';
 
 export const Locations = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,36 +21,18 @@ export const Locations = () => {
       className="min-h-screen bg-background"
     >
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-40 pb-32">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-secondary/10 rounded-full blur-[160px]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(#ff8f70_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
-          <img 
-            alt="Tactical satellite map background" 
-            className="w-full h-full object-cover opacity-10 mix-blend-overlay grayscale contrast-150" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs7P3z6elJ_vZ64UexC9qos5pI7PxIrZMc9UTXkaoJVey1F_YX5iRXv3MR1XI8v7aJ6Zmq-zZWMUC0e8NmIsVmXnE3O5Rk3hs-fyNG5LyCB2gl0GVsoaGkcDt-Udnp8cEhZaszkzDjxZfeT3bBwigEQpK31Ow2s9tzUeZJ0ykMdzQaJ-id6XGEz-o03KB87iMXsSJhqG92_Dt0Hh_Y9lrrHgth8WjI8H0I_KHfgUUTxDbk4Yk84-7qk2itMxotQNZnhgDeALlHP9k" 
-            referrerPolicy="no-referrer" 
-          />
-        </div>
-        <Container className="relative z-10 text-center lg:text-left">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
-          >
-            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black font-headline tracking-tighter mb-8 uppercase italic leading-[0.8] drop-shadow-2xl">
-              Find Your <br /><span className="text-secondary italic">Source</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-on-surface-variant font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              The surge is spreading globally. Locate your nearest Rex Velocity authorized deployment center and refuel your biological arsenal.
-            </p>
-          </motion.div>
-        </Container>
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none hidden lg:block">
-          <MapPin className="w-[600px] h-[600px] text-primary rotate-12 animate-float" />
-        </div>
-      </section>
+      <PageHero
+        title={<>Find Your <br /><span className="text-secondary italic">Source</span></>}
+        description="The surge is spreading globally. Locate your nearest Rex Velocity authorized deployment center and refuel your biological arsenal."
+        backgroundImage="https://lh3.googleusercontent.com/aida-public/AB6AXuDs7P3z6elJ_vZ64UexC9qos5pI7PxIrZMc9UTXkaoJVey1F_YX5iRXv3MR1XI8v7aJ6Zmq-zZWMUC0e8NmIsVmXnE3O5Rk3hs-fyNG5LyCB2gl0GVsoaGkcDt-Udnp8cEhZaszkzDjxZfeT3bBwigEQpK31Ow2s9tzUeZJ0ykMdzQaJ-id6XGEz-o03KB87iMXsSJhqG92_Dt0Hh_Y9lrrHgth8WjI8H0I_KHfgUUTxDbk4Yk84-7qk2itMxotQNZnhgDeALlHP9k"
+        themeColor="secondary"
+        hasGridBackground={true}
+        backgroundContent={
+          <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none hidden lg:block z-0">
+            <MapPin className="w-[600px] h-[600px] text-primary rotate-12 animate-float" />
+          </div>
+        }
+      />
 
       {/* Store Locator Section */}
       <section className="py-24">
