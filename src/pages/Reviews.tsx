@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Star, User, Quote, Instagram, Twitter, MessageSquare } from 'lucide-react';
 import { Container } from '../components/Container';
+import { PageHero } from '../components/PageHero';
 
 export const Reviews = () => {
   const reviews = [
@@ -27,54 +28,32 @@ export const Reviews = () => {
       className="min-h-screen bg-background"
     >
       {/* Hero Section */}
-      <section className="min-h-[70vh] flex items-center relative overflow-hidden pt-32 pb-20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[160px] animate-pulse"></div>
-          <img 
-            alt="Abstract performance background" 
-            className="w-full h-full object-cover opacity-10 mix-blend-overlay grayscale" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPY8onMpth-5sEIC9n2LpPXU6q2cb2tFKxWxTzbvDIw3agvnC5M2f4VPdy4m6HJ4y7dyCCL3cY7xXN2n3BIjuDYBCGs_mQHzqBZTlSoovifjwTDzJnfe2XNXnNs24cDFWM7W_ZHtteAcfiThHt22joIacjxt5Jl7oDZBLnLWDpzcXK_8EEyfGJVtDw6ikaVyVu1vNm2fhl8dFgTb4GSuc58Fjsh-dq1Z1ee12A33gYdkZ7YjxPv9jC8KJ4dQhcyg3ujLeysCkVaak" 
-            referrerPolicy="no-referrer" 
-          />
-        </div>
-        <Container className="relative z-10">
-          <div className="flex flex-col lg:flex-row gap-12 items-center text-center lg:text-left">
+      <PageHero
+        title={<>Voice <br />of the <span className="text-primary italic">Apex</span></>}
+        description="Real results from elite performers. Discover how Rex Velocity is redefining the biological limit of human velocity."
+        backgroundImage="https://lh3.googleusercontent.com/aida-public/AB6AXuAPY8onMpth-5sEIC9n2LpPXU6q2cb2tFKxWxTzbvDIw3agvnC5M2f4VPdy4m6HJ4y7dyCCL3cY7xXN2n3BIjuDYBCGs_mQHzqBZTlSoovifjwTDzJnfe2XNXnNs24cDFWM7W_ZHtteAcfiThHt22joIacjxt5Jl7oDZBLnLWDpzcXK_8EEyfGJVtDw6ikaVyVu1vNm2fhl8dFgTb4GSuc58Fjsh-dq1Z1ee12A33gYdkZ7YjxPv9jC8KJ4dQhcyg3ujLeysCkVaak"
+        themeColor="primary"
+        pulse={true}
+        rightContent={
+          socialStats.map((stat, idx) => (
             <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="lg:w-3/5"
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 + (idx * 0.1) }}
+              className="bg-surface-container-high/40 backdrop-blur-md p-6 rounded-[2rem] border border-white/5 shadow-2xl flex items-center lg:flex-row flex-col gap-4 text-center lg:text-left group hover:bg-surface-container-highest/60 transition-colors"
             >
-              <h1 className="text-6xl sm:text-8xl md:text-9xl font-black font-headline tracking-tighter mb-8 uppercase italic leading-[0.8] drop-shadow-2xl">
-                Voice <br />of the <span className="text-primary italic">Apex</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-on-surface-variant font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Real results from elite performers. Discover how Rex Velocity is redefining the biological limit of human velocity.
-              </p>
+              <div className="w-12 h-12 bg-background rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <stat.icon className="w-6 h-6 text-secondary" />
+              </div>
+              <div>
+                <div className="text-2xl font-black font-headline text-on-surface">{stat.value}</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-on-surface-variant mt-1">{stat.label}</div>
+              </div>
             </motion.div>
-            
-            <div className="lg:w-2/5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6 w-full lg:max-w-xs">
-              {socialStats.map((stat, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + (idx * 0.1) }}
-                  className="bg-surface-container-high/40 backdrop-blur-md p-6 rounded-[2rem] border border-white/5 shadow-2xl flex items-center lg:flex-row flex-col gap-4 text-center lg:text-left group hover:bg-surface-container-highest/60 transition-colors"
-                >
-                  <div className="w-12 h-12 bg-background rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                    <stat.icon className="w-6 h-6 text-secondary" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-black font-headline text-on-surface">{stat.value}</div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/60">{stat.label}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
+          ))
+        }
+      />
 
       {/* Reviews Grid Section */}
       <section className="py-16 md:py-20">
