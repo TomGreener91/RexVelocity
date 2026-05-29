@@ -134,3 +134,37 @@
 .leaflet-popup.custom-popup .leaflet-popup-close-button {
   @apply text-on-surface-variant hover:text-primary transition-colors mt-1 mr-1;
 }
+
+/* Cookie Consent Theme Overrides */
+:root {
+  --cc-font-family: var(--font-body);
+  --cc-bg: var(--color-surface-container-high);
+  --cc-primary-color: var(--color-on-surface);
+  --cc-secondary-color: var(--color-on-surface-variant);
+
+  --cc-btn-primary-bg: var(--color-primary);
+  --cc-btn-primary-hover-bg: var(--color-primary-dim);
+  --cc-btn-primary-color: var(--color-on-primary);
+  --cc-btn-primary-hover-color: var(--color-on-primary);
+  --cc-btn-primary-border-color: var(--color-primary);
+  --cc-btn-primary-hover-border-color: var(--color-primary-dim);
+
+  --cc-btn-secondary-bg: var(--color-surface-container-highest);
+  --cc-btn-secondary-hover-bg: var(--color-surface-bright);
+  --cc-btn-secondary-color: var(--color-on-surface);
+  --cc-btn-secondary-hover-color: var(--color-on-surface);
+  --cc-btn-secondary-border-color: var(--color-outline-variant);
+  --cc-btn-secondary-hover-border-color: var(--color-outline);
+
+  --cc-separator-border-color: var(--color-outline-variant);
+  --cc-cookie-category-block-bg: var(--color-surface-container);
+  --cc-cookie-category-block-hover-bg: var(--color-surface-container-highest);
+
+  --cc-toggle-on-bg: var(--color-primary);
+  --cc-toggle-on-knob-bg: var(--color-on-primary);
+  --cc-toggle-off-bg: var(--color-surface-container-highest);
+  --cc-toggle-off-knob-bg: var(--color-on-surface-variant);
+
+  --cc-modal-border-radius: 1rem;
+  --cc-btn-border-radius: 0.5rem;
+}
