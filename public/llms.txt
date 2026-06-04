@@ -1,0 +1,31 @@
+# Rex Velocity
+
+> The ultimate energy drink brand for the apex predator. Find your fuel, explore the science, and join the pack.
+
+This site is an e-commerce platform for Rex Velocity energy drinks.
+
+## Main Pages
+
+- [Home](/) - The landing page featuring brand introduction and hero sections.
+- [Shop](/shop) - Browse and purchase all Rex Velocity energy drink products.
+- [Cart](/cart) - View your selected items and proceed to checkout.
+- [The Science](/formula) - Learn about the ingredients, formula, and benefits of Rex Velocity drinks.
+- [Reviews](/reviews) - Read customer feedback and testimonials.
+- [Store Locations](/locations) - Find nearby physical stores carrying Rex Velocity products.
+- [Contact Us](/contact) - Get in touch with the Rex Velocity team.
+- [Privacy Policy](/privacy) - Information on data collection, usage, and privacy practices.
+
+## Products
+
+Individual product pages provide detailed information, nutritional facts, and purchase options for each flavor:
+
+- [Prehistoric Punch](/product/01)
+- [Volcanic Blood](/product/02)
+- [Raptor Rush](/product/03)
+- [Jungle Jolt](/product/04)
+- [Arctic Annihilation](/product/05)
+- [Fossil Fuel](/product/06)
+- [Neon Nebula](/product/07)
+- [Electric Extinction](/product/08)
+- [Electric Extinction Tub](/product/09)
+- [Volcanic Blood Tub](/product/10)
