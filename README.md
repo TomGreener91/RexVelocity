@@ -35,7 +35,6 @@ Rex Velocity is a modern e-commerce web application built for an energy drink br
 
 ### Libraries & Tools
 - **Lucide React** - Icon library
-- **Google Generative AI (@google/genai)** - AI capabilities
 - **React GA4** - Google Analytics integration
 - **Vanilla Cookie Consent** - Cookie management
 - **Express** - Backend support
