@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { motion } from 'motion/react';
-import { PawPrint, Zap, Droplets, Brain, Star, Leaf, ArrowRight, Plus } from 'lucide-react';
+import { Zap, Droplets, Brain, Star, Leaf, ArrowRight, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
@@ -19,10 +19,10 @@ export const Science = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen"
+      className="min-h-[90vh]"
     >
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-40 pb-20">
+      <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden pt-40 pb-20">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] animate-pulse"></div>
           <img alt="Abstract molten lava flows in dark space" className="w-full h-full object-cover opacity-20 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP4WCD_rQAY0bRnqcqf7scDnjAaD-pM9SExQTQmJm14LNsNCRIDkxrAEe_7mVCTwDK12uSpvoBejwaXicoyMMVaZim8m1wsY2-h6Q02H0auqj35fU1uzITtjlkCGkZBkdSHYcsSkKKUCipH51mB4t440GHBprZt7L6dlZYW3TFKwBVq9qZJwnylZB5htrmnhWDDgVavV62tz7FTxSrfrKg5ckkIAp8Gh2OJYhdpN9AgC7YwMI3t7lICB7GismbQXrD_NcjxeOxtlc" referrerPolicy="no-referrer" />
@@ -65,8 +65,22 @@ export const Science = () => {
                 referrerPolicy="no-referrer" 
               />
             </div>
-            <div className="absolute -bottom-10 -right-10 lg:-bottom-20 lg:-right-20 z-20 w-40 h-40 lg:w-80 lg:h-80 opacity-60 lg:opacity-90">
-              <PawPrint className="w-full h-full text-secondary rotate-12 animate-pulse fill-current p-4 lg:p-8" />
+            <div className="absolute -bottom-10 -right-10 lg:-bottom-20 lg:-right-20 z-20 w-40 h-40 lg:w-80 lg:h-80 opacity-60 lg:opacity-90 p-4 lg:p-8">
+              <div 
+                className="w-full h-full bg-secondary animate-pulse opacity-50 drop-shadow-[0_0_15px_rgba(255,143,112,0.5)]"
+                style={{
+                  WebkitMaskImage: 'url(/claws.svg)',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskImage: 'url(/claws.svg)',
+                  maskSize: 'contain',
+                  maskPosition: 'center',
+                  maskRepeat: 'no-repeat'
+                }}
+                role="img"
+                aria-label="Claw Marks"
+              />
             </div>
           </motion.div>
         </Container>
