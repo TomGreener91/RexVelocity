@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { motion } from 'motion/react';
-import { PawPrint, Zap, Droplets, Brain, Star, Leaf, ArrowRight, Plus } from 'lucide-react';
+import { Zap, Droplets, Brain, Star, Leaf, ArrowRight, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
@@ -65,8 +65,22 @@ export const Science = () => {
                 referrerPolicy="no-referrer" 
               />
             </div>
-            <div className="absolute -bottom-10 -right-10 lg:-bottom-20 lg:-right-20 z-20 w-40 h-40 lg:w-80 lg:h-80 opacity-60 lg:opacity-90">
-              <PawPrint className="w-full h-full text-secondary rotate-12 animate-pulse fill-current p-4 lg:p-8" />
+            <div className="absolute -bottom-10 -right-10 lg:-bottom-20 lg:-right-20 z-20 w-40 h-40 lg:w-80 lg:h-80 opacity-60 lg:opacity-90 p-4 lg:p-8">
+              <div 
+                className="w-full h-full bg-secondary animate-pulse opacity-50 drop-shadow-[0_0_15px_rgba(255,143,112,0.5)]"
+                style={{
+                  WebkitMaskImage: 'url(/claws.svg)',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskImage: 'url(/claws.svg)',
+                  maskSize: 'contain',
+                  maskPosition: 'center',
+                  maskRepeat: 'no-repeat'
+                }}
+                role="img"
+                aria-label="Claw Marks"
+              />
             </div>
           </motion.div>
         </Container>
