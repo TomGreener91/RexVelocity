@@ -19,10 +19,10 @@ export const Science = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen"
+      className="min-h-[90svh]"
     >
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-40 pb-20">
+      <section className="min-h-[90svh] flex items-center justify-center relative overflow-hidden pt-40 pb-20">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] animate-pulse"></div>
           <img alt="Abstract molten lava flows in dark space" className="w-full h-full object-cover opacity-20 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP4WCD_rQAY0bRnqcqf7scDnjAaD-pM9SExQTQmJm14LNsNCRIDkxrAEe_7mVCTwDK12uSpvoBejwaXicoyMMVaZim8m1wsY2-h6Q02H0auqj35fU1uzITtjlkCGkZBkdSHYcsSkKKUCipH51mB4t440GHBprZt7L6dlZYW3TFKwBVq9qZJwnylZB5htrmnhWDDgVavV62tz7FTxSrfrKg5ckkIAp8Gh2OJYhdpN9AgC7YwMI3t7lICB7GismbQXrD_NcjxeOxtlc" referrerPolicy="no-referrer" />
